@@ -28,3 +28,4 @@
 /Users/rosswilliams/RiderProjects/GuitarStrategiesApp/GuitarStrategiesApp/obj/Debug/net8.0/GuitarStrategiesApp.pdb
 /Users/rosswilliams/RiderProjects/GuitarStrategiesApp/GuitarStrategiesApp/obj/Debug/net8.0/GuitarStrategiesApp.genruntimeconfig.cache
 /Users/rosswilliams/RiderProjects/GuitarStrategiesApp/GuitarStrategiesApp/obj/Debug/net8.0/ref/GuitarStrategiesApp.dll
+/Users/rosswilliams/RiderProjects/GuitarStrategiesApp/GuitarStrategiesApp/obj/Debug/net8.0/GuitarStrategiesApp.sourcelink.json

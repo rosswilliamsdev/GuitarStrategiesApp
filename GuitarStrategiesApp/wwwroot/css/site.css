@@ -1,19 +1,38 @@
-html {
-  font-size: 1.3em;
+* {
   font-family: "Lora", serif;
 }
-h1 {
-  font-family: "Playfair Display SC", serif;
+
+body, header, nav {
+  width: 100%;
 }
-h2,
-h3 {
-  font-family: "playfair display", serif;
+
+html {
+  font-size: 1.3rem;
 }
+
 .navbar-logo {
   font-family: "Playfair Display SC", serif;
 }
-.nav-link {
-  font-family: "Lora", serif;
+
+.lesson-notes-textarea {
+  width: 100%; /* Makes it stretch across the card */
+  height: 250px; /* Adjust the height */
+  border: 3px solid black; /* Bold border with a blue color */
+  border-radius: 8px; /* Slightly rounded corners */
+  padding: 10px; /* Space inside the textarea */
+  font-size: 16px; /* Make text inside more readable */
+  outline: none; /* Remove default blue outline */
+  resize: vertical; /* Allow vertical resizing */
+}
+
+.lesson-notes-textarea:focus {
+  box-shadow: 0 0 8px rgba(0, 91, 187, 0.5); /* Adds a glowing effect */
+}
+
+.youtube-container {
+  position: relative;
+  width: 100%;
+  max-width: 560px; /* Prevents it from getting too large */
 }
 
 @media (min-width: 768px) {

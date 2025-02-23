@@ -26,12 +26,12 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9JbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/rosswilliams/RiderProjects/GuitarStrategiesApp/GuitarStrategiesApp/Views/Home/Privacy.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Qcml2YWN5LmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
 [/Users/rosswilliams/RiderProjects/GuitarStrategiesApp/GuitarStrategiesApp/Views/LessonNotes/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTGVzc29uTm90ZXMvSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/rosswilliams/RiderProjects/GuitarStrategiesApp/GuitarStrategiesApp/Views/Library/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTGlicmFyeS9JbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/rosswilliams/RiderProjects/GuitarStrategiesApp/GuitarStrategiesApp/Views/Shared/Error.cshtml]

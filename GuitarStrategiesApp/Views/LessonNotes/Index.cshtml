@@ -3,7 +3,9 @@
 }
 
 <div class="container mt-4">
-    <h2>Lesson Notes</h2>
+    <div class="d-flex justify-content-center align-items-center">
+        <h2 class="text-center">Lesson Notes</h2>
+    </div>
 
     <div class="card">
         <div class="card-header">
@@ -11,10 +13,32 @@
         </div>
         <div class="card-body">
             <p><strong>Student:</strong> John Doe</p>
-            <p><strong>Teacher:</strong> Jane Smith</p>
-            <p><strong>Lesson Summary:</strong> This lesson covered basic chord progressions and strumming techniques.</p>
-            <p><strong>YouTube:</strong> <a href="#">Click here</a></p>
-            <p><strong>Attachments:</strong> <a href="#">Add here</a></p>
+            <p><strong>Teacher:</strong> Ross Williams</p>
+            <textarea class="lesson-notes-textarea" placeholder="Enter your lesson notes here"></textarea>
+            
+            <!-- YouTube URL Input Field -->
+            <div class="mb-3">
+                <label for="youtubeUrl" class="form-label"><strong>YouTube Video URL:</strong></label>
+                <input type="text" id="youtubeUrl" class="form-control" placeholder="Enter YouTube link..." oninput="updateYouTubeVideo()">
+            </div>
+
+            <!-- Embedded YouTube Video -->
+            <div class="youtube-container">
+                <iframe id="youtubePlayer" width="100%" height="315"
+                        src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen>
+                </iframe>
+            </div>
+            <!-- Attachments Section -->
+            <div class="mb-3">
+                <label for="attachment" class="form-label"><strong>Attachments:</strong></label>
+                <input type="file" id="attachment" class="form-control" multiple>
+                <small class="text-muted">You can upload multiple files.</small>
+
+                <ul id="attachmentList" class="list-group mt-2"></ul>
+            </div>
         </div>
     </div>
 
@@ -22,3 +46,49 @@
         <button class="btn btn-primary">Add New Note</button>
     </div>
 </div>
+
+
+<script>
+    
+    //For YouTube stuff
+    function updateYouTubeVideo() {
+        let url = document.getElementById("youtubeUrl").value;
+        let videoId = extractYouTubeID(url);
+
+        if (videoId) {
+            document.getElementById("youtubePlayer").src = "https://www.youtube.com/embed/" + videoId;
+        }
+    }
+    //More YouTube
+    function extractYouTubeID(url) {
+        let regex = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/;
+        let match = url.match(regex);
+        return match ? match[1] : null;
+    }
+    //For adding file attachments
+    document.getElementById("attachment").addEventListener("change", function(event) {
+        let fileList = Array.from(event.target.files);
+        let attachmentList = document.getElementById("attachmentList");
+
+        
+
+        fileList.forEach((file, index) => {
+            let listItem = document.createElement("li");
+            listItem.classList.add("list-group-item", "d-flex", "justify-content-between", "align-items-center");
+            listItem.innerHTML = `
+            <span>${file.name}</span>
+            <button class="btn btn-sm btn-danger remove-attachment" data-index="${index}">X</button>
+        `;
+
+            attachmentList.appendChild(listItem);
+        });
+
+        // Attach click event listener to each remove button
+        document.querySelectorAll(".remove-attachment").forEach(button => {
+            button.addEventListener("click", function() {
+                this.parentElement.remove(); // Remove the list item
+            });
+        });
+    });
+
+</script>
