@@ -35,6 +35,83 @@ html {
   max-width: 560px; /* Prevents it from getting too large */
 }
 
+
+/*LIBRARY PAGE-------------------------------------------------------------------------*/
+
+/* Drag and Drop Styling */
+.drop-zone {
+  border: 2px dashed #007bff;
+  padding: 30px;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-bottom: 20px;
+  background-color: #f8f9fa;
+}
+
+.drop-zone.drag-over {
+  background-color: #e3f2fd;
+  border-color: #0056b3;
+}
+
+.file-label {
+  color: #007bff;
+  cursor: pointer;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+/* List View */
+.list-view .file-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Grid View */
+.grid-view {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.grid-view .file-item {
+  width: 150px;
+  text-align: center;
+}
+
+.file-thumbnail {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.file-icon {
+  font-size: 40px;
+}
+
+/*RECOMMENDATIONS PAGE ----------------------------------------------------------------*/
+
+.rec-thumbnail {
+  width: 100px;
+  height: auto;
+  object-fit: contain;
+}
+
+.rec-title {
+  text-decoration: none;
+  color: #007bff;
+}
+
+.rec-title:hover {
+  text-decoration: underline;
+}
+
+/*MEDIA QUERIES------------------------------------------------------------------------*/
+
 @media (min-width: 768px) {
   html {
     font-size: 16px;

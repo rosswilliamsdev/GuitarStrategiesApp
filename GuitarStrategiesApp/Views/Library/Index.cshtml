@@ -1,7 +1,97 @@
-
 @{
-    ViewBag.Title = "Library";
+    ViewData["Title"] = "Library";
     Layout = "_Layout";
 }
 
-<h2>Library</h2>
+<div class="container mt-4">
+    <h2 class="text-center">Library</h2>
+
+    <!-- Drag-and-Drop Upload Section -->
+    <div id="dropZone" class="drop-zone">
+        <p>Drag & Drop files here or <label for="fileUpload" class="file-label">click to upload</label></p>
+        <input type="file" id="fileUpload" class="form-control" multiple hidden>
+    </div>
+
+    <!-- View Toggle Buttons -->
+    <div class="d-flex justify-content-between mb-3">
+        <div>
+            <button class="btn btn-outline-primary" onclick="setView('list')">List View</button>
+            <button class="btn btn-outline-secondary" onclick="setView('grid')">Thumbnail View</button>
+        </div>
+    </div>
+
+    <!-- File Display Section -->
+    <div id="fileContainer" class="list-view"></div>
+</div>
+
+<script>
+    let filesArray = [];
+
+    // Drag-and-Drop Handling
+    let dropZone = document.getElementById("dropZone");
+    let fileUpload = document.getElementById("fileUpload");
+
+    dropZone.addEventListener("dragover", function(event) {
+        event.preventDefault();
+        dropZone.classList.add("drag-over");
+    });
+
+    dropZone.addEventListener("dragleave", function() {
+        dropZone.classList.remove("drag-over");
+    });
+
+    dropZone.addEventListener("drop", function(event) {
+        event.preventDefault();
+        dropZone.classList.remove("drag-over");
+
+        let droppedFiles = Array.from(event.dataTransfer.files);
+        filesArray = filesArray.concat(droppedFiles);
+        renderFiles();
+    });
+
+    // Handle manual file selection
+    fileUpload.addEventListener("change", function(event) {
+        let uploadedFiles = Array.from(event.target.files);
+        filesArray = filesArray.concat(uploadedFiles);
+        renderFiles();
+    });
+
+    // Render files based on selected view
+    function renderFiles() {
+        let fileContainer = document.getElementById("fileContainer");
+        fileContainer.innerHTML = "";
+
+        filesArray.forEach((file, index) => {
+            let fileElement = document.createElement("div");
+            fileElement.classList.add("file-item");
+            fileElement.innerHTML = `
+                <div class="file-preview">
+                    ${file.type.startsWith("image") ? `<img src="${URL.createObjectURL(file)}" class="file-thumbnail">` : `<span class="file-icon">📄</span>`}
+                </div>
+                <div class="file-info">
+                    <span>${file.name}</span>
+                    <button class="btn btn-sm btn-danger" onclick="removeFile(${index})">X</button>
+                </div>
+            `;
+            fileContainer.appendChild(fileElement);
+        });
+    }
+
+    // Remove file from list
+    function removeFile(index) {
+        filesArray.splice(index, 1);
+        renderFiles();
+    }
+
+    // Toggle view mode
+    function setView(view) {
+        let fileContainer = document.getElementById("fileContainer");
+        if (view === "list") {
+            fileContainer.classList.add("list-view");
+            fileContainer.classList.remove("grid-view");
+        } else {
+            fileContainer.classList.add("grid-view");
+            fileContainer.classList.remove("list-view");
+        }
+    }
+</script>

@@ -1,0 +1,64 @@
+@model List<GuitarStrategiesApp.Models.Recommendation>
+
+@{
+    ViewData["Title"] = "Recommendations";
+}
+
+<div class="container mt-4">
+    <h2 class="text-center">Teacher Recommendations</h2>
+
+    <!-- Error Message -->
+    @if (!string.IsNullOrEmpty(ViewBag.Error))
+    {
+        <div class="alert alert-danger">@ViewBag.Error</div>
+    }
+
+    <!-- Recommendation Form -->
+    <form method="post" asp-action="AddRecommendation" class="mb-4">
+        <div class="mb-3">
+            <label class="form-label"><strong>Category:</strong></label>
+            <select name="category" class="form-control" required>
+                <option value="Music Equipment">Music Equipment</option>
+                <option value="Books">Books</option>
+                <option value="YouTube Channels">YouTube Channels</option>
+                <option value="Other">Other</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label class="form-label"><strong>Link:</strong></label>
+            <input type="url" name="link" class="form-control" required placeholder="Enter a link (e.g. YouTube, Amazon, etc.)">
+        </div>
+        <button type="submit" class="btn btn-primary">Add Recommendation</button>
+    </form>
+
+    <!-- Recommendations List -->
+    <h3 class="mt-4">Posted Recommendations</h3>
+    @if (Model.Any())
+    {
+        <div class="list-group">
+            @foreach (var rec in Model)
+            {
+                <div class="list-group-item d-flex align-items-center">
+                    <a href="@rec.Link" target="_blank">
+                        <img src="@rec.ThumbnailUrl" alt="Thumbnail" class="rec-thumbnail">
+                    </a>
+                    <div class="ms-3 flex-grow-1">
+                        <h5>
+                            <a href="@rec.Link" target="_blank" class="rec-title">@rec.Title</a>
+                            <span class="badge bg-secondary">@rec.Category</span>
+                        </h5>
+                    </div>
+                    <!-- Remove Button -->
+                    <form method="post" asp-action="RemoveRecommendation" class="ms-3">
+                        <input type="hidden" name="id" value="@rec.Id"/>
+                        <button type="submit" class="btn btn-danger btn-sm">Remove</button>
+                    </form>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <p>No recommendations yet. Be the first to add one!</p>
+    }
+</div>

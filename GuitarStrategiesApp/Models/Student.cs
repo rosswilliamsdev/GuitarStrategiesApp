@@ -2,6 +2,7 @@ namespace GuitarStrategiesApp.Models;
 
 public class Student : User
 {
-    Teacher Teacher;
-    List<LessonNote> LessonNotes;
+    public int TeacherId { get; set; }  // Foreign Key
+    public Teacher Teacher { get; set; }  // Navigation Property
+    public List<LessonNote> LessonNotes { get; set; } = new();
 }
