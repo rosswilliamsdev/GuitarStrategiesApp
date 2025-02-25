@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using GuitarStrategiesApp.Models;
+using GuitarStrategiesApp.ViewModels;
 
 namespace GuitarStrategiesApp.Controllers;
 

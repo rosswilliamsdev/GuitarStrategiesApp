@@ -1,5 +1,4 @@
-namespace GuitarStrategiesApp.Models;
-
+namespace GuitarStrategiesApp.ViewModels;
 public class ErrorViewModel
 {
     public string? RequestId { get; set; }

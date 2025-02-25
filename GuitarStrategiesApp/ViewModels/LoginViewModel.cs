@@ -1,4 +1,4 @@
-namespace GuitarStrategiesApp.Models;
+namespace GuitarStrategiesApp.ViewModels;
 
 public class LoginViewModel
 {

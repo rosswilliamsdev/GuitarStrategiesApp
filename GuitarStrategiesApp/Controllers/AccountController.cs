@@ -1,4 +1,4 @@
-using GuitarStrategiesApp.Models;
+using GuitarStrategiesApp.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GuitarStrategiesApp.Controllers;
